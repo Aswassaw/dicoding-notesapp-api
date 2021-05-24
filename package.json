@@ -1,0 +1,26 @@
+{
+  "name": "submission-bookshelf-api",
+  "version": "1.0.0",
+  "description": "Submission Bookshelf API dari kelas Dicoding Academy Belajar Membuat Aplikasi Back-End untuk Pemula",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andry-pebrianto/dicoding-submission-bookshelf-api.git"
+  },
+  "keywords": [
+    "JavaScript",
+    "Nodejs",
+    "Hapijs",
+    "Dicoding",
+    "Submission"
+  ],
+  "author": "Andry Pebrianto",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/andry-pebrianto/dicoding-submission-bookshelf-api/issues"
+  },
+  "homepage": "https://github.com/andry-pebrianto/dicoding-submission-bookshelf-api#readme"
+}
