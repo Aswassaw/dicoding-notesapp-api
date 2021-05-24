@@ -59,33 +59,33 @@ const addBookHandler = (req, h) => {
   books.push(newBook);
   const isSuccess = books.filter((book) => book.id === id).length > 0;
 
-  // Jika add data buku berhasil
-  if (isSuccess) {
+  // Jika add data buku gagal
+  if (!isSuccess) {
     const response = h.response({
-      status: "success",
-      message: "Buku berhasil ditambahkan",
-      data: {
-        bookId: id,
-      },
+      status: "error",
+      message: "Buku gagal ditambahkan",
     });
 
-    response.code(201);
+    response.code(500);
     return response;
   }
 
-  // Jika add data buku gagal
+  // Jika add data buku berhasil
   const response = h.response({
-    status: "error",
-    message: "Buku gagal ditambahkan",
+    status: "success",
+    message: "Buku berhasil ditambahkan",
+    data: {
+      bookId: id,
+    },
   });
 
-  response.code(500);
+  response.code(201);
   return response;
 };
 
 const getAllBooksHandler = () => {
-  books = books.map((book) => {
-    const { id, name, publisher } = book;
+  books = books.map((b) => {
+    const { id, name, publisher } = b;
     return {
       id,
       name,
@@ -99,4 +99,28 @@ const getAllBooksHandler = () => {
   };
 };
 
-module.exports = { addBookHandler, getAllBooksHandler };
+const getBookByIdHandler = (req, h) => {
+  const { bookId } = req.params;
+  const book = books.filter((b) => b.id === bookId)[0];
+
+  // Jika buku tidak ditemukan
+  if (!book) {
+    const response = h.response({
+      status: "fail",
+      message: "Buku tidak ditemukan",
+    });
+
+    response.code(404);
+    return response;
+  }
+
+  // Jika buku ditemukan
+  return {
+    status: "success",
+    data: {
+      book,
+    },
+  };
+};
+
+module.exports = { addBookHandler, getAllBooksHandler, getBookByIdHandler };
