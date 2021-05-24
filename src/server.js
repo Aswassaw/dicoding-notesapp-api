@@ -1,4 +1,5 @@
 const Hapi = require("@hapi/hapi");
+const routes = require("./routes");
 
 const init = async () => {
   try {
@@ -12,11 +13,7 @@ const init = async () => {
       },
     });
 
-    server.route({
-      method: "GET",
-      path: "/",
-      handler: () => "Halaman Home",
-    });
+    server.route(routes);
 
     await server.start();
     console.log(`Server berjalan pada ${server.info.uri}`);
