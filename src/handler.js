@@ -1,5 +1,5 @@
 const { nanoid } = require('nanoid');
-const errorHandler = require('./error');
+const { errorHandler } = require('./libraries');
 const booksData = require('./books');
 
 const addBookHandler = (req, h) => {

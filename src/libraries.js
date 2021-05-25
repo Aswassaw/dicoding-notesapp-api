@@ -7,4 +7,4 @@ const errorHandler = (error, h) => {
   return response;
 };
 
-module.exports = errorHandler;
+module.exports = { errorHandler };
