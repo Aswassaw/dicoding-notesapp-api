@@ -1,14 +1,6 @@
 const { nanoid } = require('nanoid');
+const errorHandler = require('./error');
 const booksData = require('./books');
-
-const errorHandler = (error, h) => {
-  const response = h.response({
-    status: 'error',
-    message: error.message,
-  });
-  response.code(500);
-  return response;
-};
 
 const addBookHandler = (req, h) => {
   try {
