@@ -16,13 +16,26 @@ const init = async () => {
     },
   });
 
+  server.route([
+    {
+      method: "GET",
+      path: "/",
+      handler: (req, h) => {
+        return {
+          status: "success",
+          message: "Web Service Online",
+        };
+      },
+    },
+  ]);
+
   await server.register({
     plugin: notes,
     options: {
       service: notesService,
       validator: NotesValidator,
-    }
-  })
+    },
+  });
 
   await server.start();
   console.log(`Server berjalan pada ${server.info.uri}`);
