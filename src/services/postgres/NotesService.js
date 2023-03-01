@@ -1,4 +1,5 @@
 const { Pool } = require("pg");
+const { nanoid } = require("nanoid");
 const InvariantError = require("../../exceptions/InvariantError");
 const NotFoundError = require("../../exceptions/NotFoundError");
 const { mapDBToModel } = require("../../utils");
@@ -33,7 +34,7 @@ class NotesService {
     return result.rows.map(mapDBToModel);
   }
 
-  async getNoteById() {
+  async getNoteById(id) {
     const query = {
       text: "SELECT * FROM notes WHERE id = $1",
       values: [id],
@@ -51,7 +52,7 @@ class NotesService {
     const updatedAt = new Date().toISOString();
 
     const query = {
-      text: "UPDATE notes SET title = $1, body = $2, tags = $3, updatedAt = $4 WHERE id = $5 RETURNING id",
+      text: "UPDATE notes SET title = $1, body = $2, tags = $3, updated_at = $4 WHERE id = $5 RETURNING id",
       values: [title, body, tags, updatedAt, id],
     };
 
