@@ -22,6 +22,7 @@ class UsersService {
     if (!result.rows.length) {
       throw new InvariantError("User gagal ditambahkan");
     }
+
     return result.rows[0].id;
   }
 
@@ -38,6 +39,21 @@ class UsersService {
         "Gagal menambahkan user. Username sudah digunakan."
       );
     }
+  }
+
+  async getUserById(userId) {
+    const query = {
+      text: 'SELECT id, username, fullname FROM users WHERE id = $1',
+      values: [userId],
+    };
+
+    const result = await this._pool.query(query);
+
+    if (!result.rows.length) {
+      throw new NotFoundError('User tidak ditemukan');
+    }
+
+    return result.rows[0];
   }
 }
 
