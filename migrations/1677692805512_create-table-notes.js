@@ -3,29 +3,29 @@
 exports.shorthands = undefined;
 
 exports.up = (pgm) => {
-  pgm.createTable('notes', {
+  pgm.createTable("notes", {
     id: {
-      type: 'VARCHAR(50)',
+      type: "VARCHAR(50)",
       primaryKey: true,
     },
     title: {
-      type: 'TEXT',
+      type: "TEXT",
       notNull: true,
     },
     body: {
-      type: 'TEXT',
+      type: "TEXT",
       notNull: true,
     },
     tags: {
-      type: 'TEXT[]',
+      type: "TEXT[]",
       notNull: true,
     },
     created_at: {
-      type: 'TEXT',
+      type: "TEXT",
       notNull: true,
     },
     updated_at: {
-      type: 'TEXT',
+      type: "TEXT",
       notNull: true,
     },
   });
